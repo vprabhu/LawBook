@@ -2,20 +2,29 @@ package com.ezylaw.lawbook.viewmodel
 
 import androidx.lifecycle.*
 import com.ezylaw.lawbook.model.User
-import com.ezylaw.lawbook.repository.UserRepository
+import com.ezylaw.lawbook.room.UserRepository
 import kotlinx.coroutines.launch
 
 class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
 
-    val allUser: LiveData<MutableList<User>> = userRepository.allUsers.asLiveData()
+    val allUser: LiveData<MutableList<User>> = userRepository.getAllUserList.asLiveData()
 
-    // Launching a new coroutine to insert the data in a non-blocking way
-    fun insert(user: User) = viewModelScope.launch {
-        userRepository.insert(user)
+    //Todo with no live data
+    fun loginUsers(userId: Long, pwd: String): User {
+        return userRepository.loginUsers(userId, pwd)
     }
 
-    fun delete(user: User) = viewModelScope.launch {
-        userRepository.delete(user)
+    // Launching a new coroutine to insert the data in a non-blocking way
+    fun insertUser(user: User) = viewModelScope.launch {
+        userRepository.insertUser(user)
+    }
+
+    fun deleteUser(user: User) = viewModelScope.launch {
+        userRepository.deleteUser(user)
+    }
+
+    fun updateUser(user: User) = viewModelScope.launch {
+        userRepository.updateUser(user)
     }
 
     class UserViewModelFactory(private val userRepository: UserRepository) :

@@ -1,11 +1,10 @@
-package com.ezylaw.lawbook
+package com.ezylaw.lawbook.room
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.ezylaw.lawbook.dao.UsersDao
 import com.ezylaw.lawbook.model.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -15,22 +14,22 @@ import kotlinx.coroutines.launch
     version = 1,
     exportSchema = false
 ) //exportSchema = false true In case of Migration
-public abstract class UserRoomDB : RoomDatabase() {
+public abstract class LbRoomDatabase : RoomDatabase() {
 
-    abstract fun userDao(): UsersDao
+    abstract fun userDao(): UserDao
 
     companion object {
 
         @Volatile    //This will guarantee visibility of changes for other threads as soon as the value is changed
-        private var INSTANCE: UserRoomDB? = null
+        private var INSTANCE: LbRoomDatabase? = null
 
-        fun getDatabase(context: Context, scope: CoroutineScope): UserRoomDB {
+        fun getDatabase(context: Context, scope: CoroutineScope): LbRoomDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    UserRoomDB::class.java,
+                    LbRoomDatabase::class.java,
                     "lawbook_db"
-                ).addCallback(UsersCallback(scope))
+                ).addCallback(LawBookCallback(scope))
                     .build()
 
                 INSTANCE = instance
@@ -41,7 +40,7 @@ public abstract class UserRoomDB : RoomDatabase() {
         }
     }
 
-    private class UsersCallback(val scope: CoroutineScope) : RoomDatabase.Callback() {
+    private class LawBookCallback(val scope: CoroutineScope) : RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
 
