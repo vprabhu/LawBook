@@ -5,18 +5,20 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.ezylaw.lawbook.model.PracticeArea
 import com.ezylaw.lawbook.model.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Database(
-    entities = [User::class],
+    entities = [User::class, PracticeArea::class],
     version = 1,
     exportSchema = false
 ) //exportSchema = false true In case of Migration
 public abstract class LbRoomDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
+    abstract fun practiceAreaDao(): PracticeAreaDao
 
     companion object {
 
@@ -50,6 +52,19 @@ public abstract class LbRoomDatabase : RoomDatabase() {
                     // when RoomDatabase is created
                     // populate here
                     userRoomDB.userDao().insertUser(User(1, "abc123", "Admin", "9999999999", 25))
+
+                    userRoomDB.practiceAreaDao().insertPracticeArea(
+                        PracticeArea(
+                            1, "Marrage",
+                            "For merrage and devorce", "Family"
+                        )
+                    )
+                    userRoomDB.practiceAreaDao().insertPracticeArea(
+                        PracticeArea(
+                            2, "Property",
+                            "For property law", "Civil"
+                        )
+                    )
                 }
             }
         }
