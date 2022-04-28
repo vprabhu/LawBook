@@ -8,3 +8,9 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    activityVersion = '1.4.0'
+    lifecycleVersion = '2.4.0'
+    roomVersion = '2.4.1'
+}
