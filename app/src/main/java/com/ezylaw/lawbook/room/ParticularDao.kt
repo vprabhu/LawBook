@@ -8,7 +8,7 @@ import com.ezylaw.lawbook.model.Particular
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface PracticeAreaDao {
+interface ParticularDao {
 
     @Query("SELECT * FROM Particular")
     fun getPracticeList(): Flow<MutableList<Particular>>

@@ -16,7 +16,7 @@ import kotlinx.coroutines.CoroutineScope
 public abstract class LbRoomDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
-    abstract fun practiceAreaDao(): PracticeAreaDao
+    abstract fun practiceAreaDao(): ParticularDao
 
     companion object {
 

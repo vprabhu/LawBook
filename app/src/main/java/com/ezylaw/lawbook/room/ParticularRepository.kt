@@ -4,14 +4,14 @@ import androidx.annotation.WorkerThread
 import com.ezylaw.lawbook.model.Particular
 import kotlinx.coroutines.flow.Flow
 
-class PracticeRepository(private val practiceAreaDao: PracticeAreaDao) {
+class ParticularRepository(private val particularDao: ParticularDao) {
 
-    val getAllUserList: Flow<MutableList<Particular>> = practiceAreaDao.getPracticeList()
+    val getAllUserList: Flow<MutableList<Particular>> = particularDao.getPracticeList()
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun insertUser(particular: Particular) {
-        practiceAreaDao.insertPracticeArea(particular)
+        particularDao.insertPracticeArea(particular)
     }
 
 
