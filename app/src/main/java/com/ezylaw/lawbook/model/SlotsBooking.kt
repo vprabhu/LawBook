@@ -2,10 +2,11 @@ package com.ezylaw.lawbook.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = "SlotsBooking")
 data class SlotsBooking(
-    @ColumnInfo(name = "slotId") val slotId: String,
+    @PrimaryKey@ColumnInfo(name = "slotId") val slotId: String,
     @ColumnInfo(name = "caseId") val caseId: String,
     @ColumnInfo(name = "requesterId") val requesterId: String,
     @ColumnInfo(name = "accepted") val accepted: String,

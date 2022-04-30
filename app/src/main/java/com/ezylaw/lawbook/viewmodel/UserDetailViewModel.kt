@@ -5,7 +5,7 @@ import com.ezylaw.lawbook.model.PracticeArea
 import com.ezylaw.lawbook.room.PracticeRepository
 import kotlinx.coroutines.launch
 
-class PracticeAreaViewModel(private val userRepository: PracticeRepository) : ViewModel() {
+class UserDetailViewModel(private val userRepository: PracticeRepository) : ViewModel() {
 
     val allPracticeArea: LiveData<MutableList<PracticeArea>> =
         userRepository.getAllUserList.asLiveData()
@@ -19,9 +19,9 @@ class PracticeAreaViewModel(private val userRepository: PracticeRepository) : Vi
     class PracticeViewModelFactory(private val practiceRepository: PracticeRepository) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(PracticeAreaViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(UserDetailViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return PracticeAreaViewModel(practiceRepository) as T
+                return UserDetailViewModel(practiceRepository) as T
             }
             throw IllegalArgumentException("Unknown VieModel Class")
         }

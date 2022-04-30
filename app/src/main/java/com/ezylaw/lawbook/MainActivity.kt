@@ -8,7 +8,7 @@ import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.ezylaw.lawbook.model.User
-import com.ezylaw.lawbook.viewmodel.UserViewModel
+import com.ezylaw.lawbook.viewmodel.UserLogInViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var userIdEditText: EditText
     private lateinit var addButton: Button
 
-    private val userViewModel: UserViewModel by viewModels {
-        UserViewModel.UserViewModelFactory((application as LbApplication).repository)
+    private val userLogInViewModel: UserLogInViewModel by viewModels {
+        UserLogInViewModel.UserViewModelFactory((application as LbApplication).repository)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,13 +42,13 @@ class MainActivity : AppCompatActivity() {
                 "ddddtTtddzz1111122",
                 "Patna",
             )
-            userViewModel.insertUser(user)
+            userLogInViewModel.insertUser(user)
         })
 
         // Add an observer on the LiveData returned by getAlphabetizedWords.
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
-        userViewModel.allUser.observe(this) { users ->
+        userLogInViewModel.allUser.observe(this) { users ->
             // Update the cached copy of the words in the adapter.
             users.let {
                 for (user in users) {

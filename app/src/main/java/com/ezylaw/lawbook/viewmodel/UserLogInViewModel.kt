@@ -5,7 +5,7 @@ import com.ezylaw.lawbook.model.User
 import com.ezylaw.lawbook.room.UserRepository
 import kotlinx.coroutines.launch
 
-class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
+class UserLogInViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     val allUser: LiveData<MutableList<User>> = userRepository.getAllUserList.asLiveData()
 
@@ -30,9 +30,9 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
     class UserViewModelFactory(private val userRepository: UserRepository) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(UserViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(UserLogInViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return UserViewModel(userRepository) as T
+                return UserLogInViewModel(userRepository) as T
             }
             throw IllegalArgumentException("Unknown VieModel Class")
         }
