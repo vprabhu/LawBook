@@ -4,11 +4,11 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "CaseDirectory")
-data class CaseDirectory(
-    @PrimaryKey @ColumnInfo(name = "caseId") val addType: String, //From meta list
-    @ColumnInfo(name = "clientId") val houseNo: String,
-    @ColumnInfo(name = "lawyerId") val street: String,
+@Entity(tableName = "Cases")
+data class Cases(
+    @PrimaryKey @ColumnInfo(name = "caseId") val caseId: String, //From meta list
+    @ColumnInfo(name = "clientId") val clientId: String,
+    @ColumnInfo(name = "lawyerId") val lawyerId: String,
     @ColumnInfo(name = "caseTypeId") val caseTypeId: String,
     @ColumnInfo(name = "caseStatus") val caseStatus: String, //closed
     @ColumnInfo(name = "paymentStatus") val paymentStatus: String,

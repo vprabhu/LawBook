@@ -4,12 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.ezylaw.lawbook.model.PracticeArea
+import com.ezylaw.lawbook.model.Particular
 import com.ezylaw.lawbook.model.User
 import kotlinx.coroutines.CoroutineScope
 
 @Database(
-    entities = [User::class, PracticeArea::class],
+    entities = [User::class, Particular::class],
     version = 1,
     exportSchema = false
 ) //exportSchema = false true In case of Migration

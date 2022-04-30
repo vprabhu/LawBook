@@ -4,22 +4,22 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.ezylaw.lawbook.model.PracticeArea
+import com.ezylaw.lawbook.model.Particular
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PracticeAreaDao {
 
-    @Query("SELECT * FROM PracticeArea")
-    fun getPracticeList(): Flow<MutableList<PracticeArea>>
+    @Query("SELECT * FROM Particular")
+    fun getPracticeList(): Flow<MutableList<Particular>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertPracticeArea(practiceArea: PracticeArea)
+    suspend fun insertPracticeArea(particular: Particular)
 
     //@Update
-    //suspend fun updateUser(practiceArea: PracticeArea)
+    //suspend fun updateUser(practiceArea: Particular)
 
     //@Delete
-    //suspend fun deleteUser(practiceArea: PracticeArea)
+    //suspend fun deleteUser(practiceArea: Particular)
 
 }

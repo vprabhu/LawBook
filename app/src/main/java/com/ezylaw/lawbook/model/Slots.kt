@@ -4,8 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "SlotsBooking")
-data class SlotsBooking(
+@Entity(tableName = "Slots")
+data class Slots(
     @PrimaryKey@ColumnInfo(name = "slotId") val slotId: String,
     @ColumnInfo(name = "caseId") val caseId: String,
     @ColumnInfo(name = "requesterId") val requesterId: String,
