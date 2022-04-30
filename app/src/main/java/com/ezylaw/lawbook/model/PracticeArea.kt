@@ -6,8 +6,13 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "PracticeArea")
 data class PracticeArea(
-    @PrimaryKey @ColumnInfo(name = "titleId") val titleId: Long,
-    @ColumnInfo(name = "title") val title: String,
-    @ColumnInfo(name = "description") val description: String,
-    @ColumnInfo(name = "category") val category: String,
-)
+    //Foriegn key userId + titleId = Primary key
+    @PrimaryKey@ColumnInfo(name = "typeId") val typeId: Long, //From meta list
+    @ColumnInfo(name = "expYrField") val expYrField: Int,
+    @ColumnInfo(name = "noOfCases") val noOfCases: String,
+    @ColumnInfo(name = "feePhone") val feePhone: Int,
+    @ColumnInfo(name = "feeVideo") val feeVideo: Int,
+    @ColumnInfo(name = "feeInPerson") val feeInPerson: Int,
+    @ColumnInfo(name = "ownDescription") val ownDescription: String,
+    @ColumnInfo(name = "visible") val status: Boolean //From meta list yes no
+    )

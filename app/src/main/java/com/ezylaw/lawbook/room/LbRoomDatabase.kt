@@ -4,11 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.ezylaw.lawbook.model.PracticeArea
 import com.ezylaw.lawbook.model.User
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 @Database(
     entities = [User::class, PracticeArea::class],
@@ -31,8 +29,7 @@ public abstract class LbRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     LbRoomDatabase::class.java,
                     "lawbook_db"
-                ).addCallback(LawBookCallback(scope))
-                    .build()
+                ).build()
 
                 INSTANCE = instance
 
@@ -42,31 +39,4 @@ public abstract class LbRoomDatabase : RoomDatabase() {
         }
     }
 
-    private class LawBookCallback(val scope: CoroutineScope) : RoomDatabase.Callback() {
-        override fun onCreate(db: SupportSQLiteDatabase) {
-            super.onCreate(db)
-
-            INSTANCE?.let { userRoomDB ->
-                scope.launch {
-                    // if you want to populate database
-                    // when RoomDatabase is created
-                    // populate here
-                    userRoomDB.userDao().insertUser(User(1, "abc123", "Admin", "9999999999", 25))
-
-                    userRoomDB.practiceAreaDao().insertPracticeArea(
-                        PracticeArea(
-                            1, "Marrage",
-                            "For merrage and devorce", "Family"
-                        )
-                    )
-                    userRoomDB.practiceAreaDao().insertPracticeArea(
-                        PracticeArea(
-                            2, "Property",
-                            "For property law", "Civil"
-                        )
-                    )
-                }
-            }
-        }
-    }
 }

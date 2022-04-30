@@ -32,8 +32,15 @@ class MainActivity : AppCompatActivity() {
                 userIdEditText.text.toString().toLong(),
                 "222dddxxx" + userIdEditText.text.toString(),
                 "Hamid",
-                "9999993333",
-                22
+                "abdul",
+                "abdul@gmail.com",
+                "9999999999",
+                "11/22/2000",
+                "M",
+                3,
+                "BCA",
+                "ddddtTtddzz1111122",
+                "Patna",
             )
             userViewModel.insertUser(user)
         })
@@ -45,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             // Update the cached copy of the words in the adapter.
             users.let {
                 for (user in users) {
-                    Log.d("**************", user.name)
+                    Log.d("**************", user.first)
                 }
 
             }
