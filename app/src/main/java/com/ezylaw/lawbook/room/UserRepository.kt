@@ -1,6 +1,7 @@
 package com.ezylaw.lawbook.room
 
 import androidx.annotation.WorkerThread
+import com.ezylaw.lawbook.model.Particular
 import com.ezylaw.lawbook.model.User
 import kotlinx.coroutines.flow.Flow
 
@@ -28,6 +29,13 @@ class UserRepository(private val userDao: UserDao) {
     @WorkerThread
     suspend fun updateUser(user: User) {
         userDao.updateUser(user)
+    }
+
+    //
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun insertParticular(particular: Particular) {
+        userDao.insertParticular(particular)
     }
 
 }

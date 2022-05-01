@@ -1,10 +1,7 @@
 package com.ezylaw.lawbook.room
 
 import androidx.room.*
-import com.ezylaw.lawbook.model.User
-import com.ezylaw.lawbook.model.UserWithAddress
-import com.ezylaw.lawbook.model.LawyerWithCases
-import com.ezylaw.lawbook.model.ClientWithCases
+import com.ezylaw.lawbook.model.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -36,5 +33,14 @@ interface UserDao {
     @Transaction
     @Query("SELECT * FROM UserDetails WHERE userId = :userId")
     suspend fun getUserWithCasesLawyer(userId: String): List<ClientWithCases>
+
+
+    //
+    @Query("SELECT * FROM Particular")
+    fun getPracticeList(): Flow<MutableList<Particular>>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertParticular(particular: Particular)
+
 
 }
