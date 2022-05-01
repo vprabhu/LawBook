@@ -4,7 +4,7 @@ import androidx.room.Embedded
 import androidx.room.Relation
 
 data class UserWithAddress(
-    @Embedded val userId: Long,
+    @Embedded val userId: String,
     @Relation(
         parentColumn = "userId",
         entityColumn = "userId"

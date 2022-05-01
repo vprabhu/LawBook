@@ -3,8 +3,8 @@ package com.ezylaw.lawbook.room
 import androidx.room.*
 import com.ezylaw.lawbook.model.User
 import com.ezylaw.lawbook.model.UserWithAddress
-import com.ezylaw.lawbook.model.UserWithCasesClient
-import com.ezylaw.lawbook.model.UserWithCasesLawyer
+import com.ezylaw.lawbook.model.LawyerWithCases
+import com.ezylaw.lawbook.model.ClientWithCases
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -27,14 +27,14 @@ interface UserDao {
 
     @Transaction
     @Query("SELECT * FROM UserDetails WHERE userId = :userId")
-    suspend fun getUserWithAddress(userId: Long): List<UserWithAddress>
+    suspend fun getUserWithAddress(userId: String): List<UserWithAddress>
 
     @Transaction
     @Query("SELECT * FROM UserDetails WHERE userId = :userId")
-    suspend fun getUserWithCasesClient(userId: Long): List<UserWithCasesClient>
+    suspend fun getUserWithCasesClient(userId: String): List<LawyerWithCases>
 
     @Transaction
     @Query("SELECT * FROM UserDetails WHERE userId = :userId")
-    suspend fun getUserWithCasesLawyer(userId: Long): List<UserWithCasesLawyer>
+    suspend fun getUserWithCasesLawyer(userId: String): List<ClientWithCases>
 
 }

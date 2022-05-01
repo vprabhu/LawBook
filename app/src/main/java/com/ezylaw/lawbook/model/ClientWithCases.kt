@@ -3,11 +3,11 @@ package com.ezylaw.lawbook.model
 import androidx.room.Embedded
 import androidx.room.Relation
 
-data class UserWithCasesLawyer(
-    @Embedded val userId: Long,
+data class ClientWithCases(
+    @Embedded val userId: String,
     @Relation(
         parentColumn = "userId",
-        entityColumn = "lawyerId"
+        entityColumn = "clientId"
     )
     val cases: List<Cases>
 )

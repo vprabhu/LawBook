@@ -29,8 +29,9 @@ class MainActivity : AppCompatActivity() {
 
         addButton.setOnClickListener(View.OnClickListener {
             val user = User(
-                userIdEditText.text.toString().toLong(),
+                userIdEditText.text.toString(),
                 "222dddxxx" + userIdEditText.text.toString(),
+                "Lawyer",
                 "Hamid",
                 "abdul",
                 "abdul@gmail.com",
