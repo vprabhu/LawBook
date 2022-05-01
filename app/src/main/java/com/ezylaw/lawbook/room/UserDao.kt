@@ -28,11 +28,11 @@ interface UserDao {
 
     @Transaction
     @Query("SELECT * FROM UserDetails WHERE userId = :userId")
-    suspend fun getUserWithCasesClient(userId: String): List<LawyerWithCases>
+    suspend fun getClientWithCases(userId: String): List<LawyerWithCases>
 
     @Transaction
     @Query("SELECT * FROM UserDetails WHERE userId = :userId")
-    suspend fun getUserWithCasesLawyer(userId: String): List<ClientWithCases>
+    suspend fun getLawyerWithCases(userId: String): List<ClientWithCases>
 
 
     //
